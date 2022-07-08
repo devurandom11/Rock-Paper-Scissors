@@ -67,12 +67,17 @@ buttons.forEach((button) => {
   });
 });
 
-let computerSelection = computerChoice();
-
 // run functon playGame() when button is clicked
 buttonRock.addEventListener("click", playGame);
 buttonPaper.addEventListener("click", playGame);
 buttonScissors.addEventListener("click", playGame);
+
+function playGame () {
+  const playerChoice = this.textContent;
+  const computerSelection = computerChoice();
+  const result = determineWinner(playerChoice, computerSelection);
+  p.textContent = `You chose ${playerChoice} and the computer chose ${computerSelection}. ${result}`;
+}
 
 function computerChoice () {
   const choices = ["Rock", "Paper", "Scissors"];
@@ -81,6 +86,27 @@ function computerChoice () {
   return computerChoice;
 }
 
-// function playGame(computerChoice) {
-
-// }
+// Determine winner function
+function determineWinner (playerChoice, computerChoice) {
+  if (playerChoice === computerChoice) {
+    return "It's a tie!";
+  } else if (playerChoice === "Rock") {
+    if (computerChoice === "Paper") {
+      return "You lose!";
+    } else {
+      return "You win!";
+    }
+  } else if (playerChoice === "Paper") {
+    if (computerChoice === "Scissors") {
+      return "You lose!";
+    } else {
+      return "You win!";
+    }
+  } else if (playerChoice === "Scissors") {
+    if (computerChoice === "Rock") {
+      return "You lose!";
+    } else {
+      return "You win!";
+    }
+  }
+}
