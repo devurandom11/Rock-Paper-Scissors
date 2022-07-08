@@ -67,15 +67,20 @@ buttons.forEach((button) => {
   });
 });
 
-// Change button color and size on hover
-// buttonPaper.addEventListener("mouseover", function() {
-//   buttonPaper.style.backgroundColor = "green";
-//   buttonPaper.style.color = "black";
-//   buttonPaper.style.fontSize = "1.25em";
-// });
+let computerSelection = computerChoice();
 
-// buttonPaper.addEventListener("mouseout", function() {
-//   buttonPaper.style.backgroundColor = "yellow";
-//   buttonPaper.style.color = "black";
-//   buttonPaper.style.fontSize = "1em";
-// });
+// run functon playGame() when button is clicked
+buttonRock.addEventListener("click", playGame);
+buttonPaper.addEventListener("click", playGame);
+buttonScissors.addEventListener("click", playGame);
+
+function computerChoice () {
+  const choices = ["Rock", "Paper", "Scissors"];
+  const randomNumber = Math.floor(Math.random() * 3);
+  const computerChoice = choices[randomNumber];
+  return computerChoice;
+}
+
+// function playGame(computerChoice) {
+
+// }
