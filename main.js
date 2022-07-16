@@ -18,6 +18,7 @@ const playerScore = document.createElement('div')
 const computerScore = document.createElement('div')
 const playerScoreUpdate = document.createElement('span')
 const computerScoreUpdate = document.createElement('span')
+const resetButton = document.createElement('button')
 
 // Style elements
 body.style.cssText =
@@ -25,10 +26,11 @@ body.style.cssText =
 header.style.cssText =
   'display: flex; justify-content: center; margin-bottom: 250px;'
 section.style.cssText =
-  'display: flex; flex-direction: column; align-items: center; gap: 50px; height: 30vh;'
+  'display: flex; flex-direction: column; align-items: center; gap: 50px;'
 div.style.cssText =
   'display: flex; flex-direction: row; justify-content: center; gap: 10px;'
-footer.style.cssText = 'display: flex; flex-shrink: 1; justify-content: center;'
+footer.style.cssText =
+  'display: flex; flex-shrink: 1; justify-content: center; padding-bottom: 3rem;'
 buttonRock.style.cssText =
   'background-color: yellow; border: none; border-radius: 5px; padding: 10px; font-size: 1em;'
 buttonPaper.style.cssText =
@@ -37,16 +39,18 @@ buttonScissors.style.cssText =
   'background-color: yellow; border: none; border-radius: 5px; padding: 10px; font-size: 1em;'
 h1.style.cssText = 'font-size: 50px;'
 h2.style.cssText = 'font-size: 30px;'
-h3.style.cssText = 'font-size: 30px;'
+h3.style.cssText = 'font-size: 30px; '
 p.style.cssText = 'font-size: 20px;'
 scoreBoard.style.cssText =
-  'display: flex; justify-content: center; align-items: center; gap: 10px; flex-direction: column; flex: 1;'
+  'display: flex; justify-content: flex-start; align-items: center; gap: 10px; flex-direction: column; flex: 1; padding-top: 5em;'
 scoreWrapper.style.cssText =
   'display: flex; justify-content: space-between; gap: 20px;'
-playerScore.style.cssText = 'font-size: 20px;'
-computerScore.style.cssText = 'font-size: 20px;'
-playerScoreUpdate.style.cssText = 'font-size: 20px;'
-computerScoreUpdate.style.cssText = 'font-size: 20px;'
+playerScore.style.cssText = 'font-size: 40px;'
+computerScore.style.cssText = 'font-size: 40px;'
+playerScoreUpdate.style.cssText = 'font-size: 40px;'
+computerScoreUpdate.style.cssText = 'font-size: 40px;'
+resetButton.style.cssText =
+  'background-color: yellow; border: none; border-radius: 5px; padding: 10px; font-size: 1em;'
 
 // Change buttonPaper color on hover
 
@@ -58,10 +62,11 @@ buttonPaper.textContent = 'Paper'
 buttonScissors.textContent = 'Scissors'
 footer.textContent = 'Made with ❤️ by: Devurandom11'
 h3.textContent = 'Score'
-playerScoreUpdate.textContent = '0'
-computerScoreUpdate.textContent = '0'
+playerScoreUpdate.textContent = 0
+computerScoreUpdate.textContent = 0
 playerScore.textContent = 'Player: '
 computerScore.textContent = 'Computer: '
+resetButton.textContent = 'Play again!'
 
 // Append elements
 body.appendChild(header)
@@ -99,6 +104,10 @@ buttons.forEach((button) => {
 buttonRock.addEventListener('click', playGame)
 buttonPaper.addEventListener('click', playGame)
 buttonScissors.addEventListener('click', playGame)
+resetButton.addEventListener('click', function () {
+  // refresh page
+  location.reload()
+})
 
 function playGame() {
   if (
@@ -109,11 +118,36 @@ function playGame() {
     const computerSelection = computerChoice()
     const result = determineWinner(playerChoice, computerSelection)
     p.textContent = `You chose ${playerChoice} and the computer chose ${computerSelection}. ${result}`
-  } // Display win message
-  else if (computerScoreUpdate.textContent === '5') {
-    p.textContent = 'You lost! The computer beat you 5 times!'
-  } else if (playerScoreUpdate.textContent === '5') {
-    p.textContent = 'You won! You beat the computer 5 times!'
+  } else {
+    if (computerScoreUpdate.textContent == '5') {
+      p.textContent = 'You lost! The computer beat you 5 times!'
+      buttonRock.remove()
+      buttonPaper.remove()
+      buttonScissors.remove()
+      div.appendChild(resetButton)
+      resetButton.addEventListener('mouseover', function () {
+        resetButton.style.cssText =
+          'background-color: red; border: none; border-radius: 5px; padding: 10px; font-size: 1.5em; transition: all 0.2s;'
+      })
+      resetButton.addEventListener('mouseout', function () {
+        resetButton.style.cssText =
+          'background-color: yellow; border: none; border-radius: 5px; padding: 10px; font-size: 1em; transition: all 0.5s;'
+      })
+    } else {
+      p.textContent = 'You won! You beat the computer 5 times!'
+      buttonRock.remove()
+      buttonPaper.remove()
+      buttonScissors.remove()
+      div.appendChild(resetButton)
+      resetButton.addEventListener('mouseover', function () {
+        resetButton.style.cssText =
+          'background-color: red; border: none; border-radius: 5px; padding: 10px; font-size: 1.5em; transition: all 0.2s;'
+      })
+      resetButton.addEventListener('mouseout', function () {
+        resetButton.style.cssText =
+          'background-color: yellow; border: none; border-radius: 5px; padding: 10px; font-size: 1em; transition: all 0.5s;'
+      })
+    }
   }
 }
 
@@ -130,32 +164,26 @@ function determineWinner(playerChoice, computerChoice) {
     return "It's a tie!"
   } else if (playerChoice === 'Rock') {
     if (computerChoice === 'Paper') {
-      computerScoreUpdate.textContent =
-        parseInt(computerScoreUpdate.textContent) + 1
+      ++computerScoreUpdate.textContent
       return 'You lose!'
     } else {
-      playerScoreUpdate.textContent =
-        parseInt(playerScoreUpdate.textContent) + 1
+      ++playerScoreUpdate.textContent
       return 'You win!'
     }
   } else if (playerChoice === 'Paper') {
     if (computerChoice === 'Scissors') {
-      computerScoreUpdate.textContent =
-        parseInt(computerScoreUpdate.textContent) + 1
+      ++computerScoreUpdate.textContent
       return 'You lose!'
     } else {
-      playerScoreUpdate.textContent =
-        parseInt(playerScoreUpdate.textContent) + 1
+      ++playerScoreUpdate.textContent
       return 'You win!'
     }
   } else if (playerChoice === 'Scissors') {
     if (computerChoice === 'Rock') {
-      computerScoreUpdate.textContent =
-        parseInt(computerScoreUpdate.textContent) + 1
+      ++computerScoreUpdate.textContent
       return 'You lose!'
     } else {
-      playerScoreUpdate.textContent =
-        parseInt(playerScoreUpdate.textContent) + 1
+      ++playerScoreUpdate.textContent
       return 'You win!'
     }
   }
