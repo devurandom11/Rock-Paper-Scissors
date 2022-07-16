@@ -22,7 +22,7 @@ const resetButton = document.createElement('button')
 
 // Style elements
 body.style.cssText =
-  'background-color: aqua; font-family: "Comic Sans MS", cursive, sans-serif; color: yellow; display: flex; flex-direction: column; height: 100vh;'
+  'background-color: #001eff; font-family: "Comic Sans MS", cursive, sans-serif; color: yellow; display: flex; flex-direction: column; height: 100vh;'
 header.style.cssText =
   'display: flex; justify-content: center; margin-bottom: 250px;'
 section.style.cssText =
