@@ -139,6 +139,7 @@ function playGame() {
       buttonRock.remove()
       buttonPaper.remove()
       buttonScissors.remove()
+      playAsciiFireworks()
       div.appendChild(resetButton)
       resetButton.addEventListener('mouseover', function () {
         resetButton.style.cssText =
