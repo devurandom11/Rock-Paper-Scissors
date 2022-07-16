@@ -22,24 +22,24 @@ const resetButton = document.createElement('button')
 
 // Style elements
 body.style.cssText =
-  'background-color: #001eff; font-family: "Comic Sans MS", cursive, sans-serif; color: yellow; display: flex; flex-direction: column; height: 100vh;'
+  'background-color: rgb(57, 63, 95); font-family: "Comic Sans MS", cursive, sans-serif; color: rgb(255, 151, 96); display: flex; flex-direction: column; height: 100vh;'
 header.style.cssText =
   'display: flex; justify-content: center; margin-bottom: 250px;'
 section.style.cssText =
   'display: flex; flex-direction: column; align-items: center; gap: 50px;'
 div.style.cssText =
-  'display: flex; flex-direction: row; justify-content: center; gap: 10px;'
+  'display: flex; flex-direction: row; justify-content: center; gap: 30px;'
 footer.style.cssText =
   'display: flex; flex-shrink: 1; justify-content: center; padding-bottom: 3rem;'
 buttonRock.style.cssText =
-  'background-color: yellow; border: none; border-radius: 5px; padding: 10px; font-size: 1em;'
+  'background-color: rgb(233, 109, 94); border: none; border-radius: 5px; padding: 10px; font-size: 1em;'
 buttonPaper.style.cssText =
-  'background-color: yellow; border: none; border-radius: 5px; padding: 10px; font-size: 1em;'
+  'background-color: rgb(233, 109, 94); border: none; border-radius: 5px; padding: 10px; font-size: 1em;'
 buttonScissors.style.cssText =
-  'background-color: yellow; border: none; border-radius: 5px; padding: 10px; font-size: 1em;'
+  'background-color: rgb(233, 109, 94); border: none; border-radius: 5px; padding: 10px; font-size: 1em;'
 h1.style.cssText = 'font-size: 50px;'
 h2.style.cssText = 'font-size: 30px;'
-h3.style.cssText = 'font-size: 30px; '
+h3.style.cssText = 'font-size: 30px; padding-bottom: 30px;'
 p.style.cssText = 'font-size: 20px;'
 scoreBoard.style.cssText =
   'display: flex; justify-content: flex-start; align-items: center; gap: 10px; flex-direction: column; flex: 1; padding-top: 5em;'
@@ -50,7 +50,7 @@ computerScore.style.cssText = 'font-size: 40px;'
 playerScoreUpdate.style.cssText = 'font-size: 40px;'
 computerScoreUpdate.style.cssText = 'font-size: 40px;'
 resetButton.style.cssText =
-  'background-color: yellow; border: none; border-radius: 5px; padding: 10px; font-size: 1em;'
+  'background-color: rgb(255, 230, 157); border: none; border-radius: 5px; padding: 10px; font-size: 1em;'
 
 // Change buttonPaper color on hover
 
@@ -92,11 +92,11 @@ const buttons = document.querySelectorAll('button')
 buttons.forEach((button) => {
   button.addEventListener('mouseover', function () {
     button.style.cssText =
-      'background-color: red; border: none; border-radius: 5px; padding: 10px; font-size: 1.5em; transition: all 0.2s;'
+      'background-color: rgb(106, 126, 106); border: none; border-radius: 5px; padding: 10px; font-size: 1.5em; transition: all 0.2s;'
   })
   button.addEventListener('mouseout', function () {
     button.style.cssText =
-      'background-color: yellow; border: none; border-radius: 5px; padding: 10px; font-size: 1em; transition: all 0.5s;'
+      'background-color: rgb(255, 230, 157); border: none; border-radius: 5px; padding: 10px; font-size: 1em; transition: all 0.5s;'
   })
 })
 
@@ -127,11 +127,11 @@ function playGame() {
       div.appendChild(resetButton)
       resetButton.addEventListener('mouseover', function () {
         resetButton.style.cssText =
-          'background-color: red; border: none; border-radius: 5px; padding: 10px; font-size: 1.5em; transition: all 0.2s;'
+          'background-color: rgb(106, 126, 106); border: none; border-radius: 5px; padding: 10px; font-size: 1.5em; transition: all 0.2s;'
       })
       resetButton.addEventListener('mouseout', function () {
         resetButton.style.cssText =
-          'background-color: yellow; border: none; border-radius: 5px; padding: 10px; font-size: 1em; transition: all 0.5s;'
+          'background-color: rgb(255, 230, 157); border: none; border-radius: 5px; padding: 10px; font-size: 1em; transition: all 0.5s;'
       })
     } else {
       p.textContent = 'You won! You beat the computer 5 times!'
@@ -141,11 +141,11 @@ function playGame() {
       div.appendChild(resetButton)
       resetButton.addEventListener('mouseover', function () {
         resetButton.style.cssText =
-          'background-color: red; border: none; border-radius: 5px; padding: 10px; font-size: 1.5em; transition: all 0.2s;'
+          'background-color: rgb(106, 126, 106); border: none; border-radius: 5px; padding: 10px; font-size: 1.5em; transition: all 0.2s;'
       })
       resetButton.addEventListener('mouseout', function () {
         resetButton.style.cssText =
-          'background-color: yellow; border: none; border-radius: 5px; padding: 10px; font-size: 1em; transition: all 0.5s;'
+          'background-color: rgb(255, 230, 157; border: none; border-radius: 5px; padding: 10px; font-size: 1em; transition: all 0.5s;'
       })
     }
   }
