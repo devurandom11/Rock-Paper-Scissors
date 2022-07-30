@@ -72,14 +72,14 @@ buttonRock.addEventListener("click", playGame);
 buttonPaper.addEventListener("click", playGame);
 buttonScissors.addEventListener("click", playGame);
 
-function playGame () {
+function playGame() {
   const playerChoice = this.textContent;
   const computerSelection = computerChoice();
   const result = determineWinner(playerChoice, computerSelection);
   p.textContent = `You chose ${playerChoice} and the computer chose ${computerSelection}. ${result}`;
 }
 
-function computerChoice () {
+function computerChoice() {
   const choices = ["Rock", "Paper", "Scissors"];
   const randomNumber = Math.floor(Math.random() * 3);
   const computerChoice = choices[randomNumber];
@@ -87,7 +87,7 @@ function computerChoice () {
 }
 
 // Determine winner function
-function determineWinner (playerChoice, computerChoice) {
+function determineWinner(playerChoice, computerChoice) {
   if (playerChoice === computerChoice) {
     return "It's a tie!";
   } else if (playerChoice === "Rock") {
