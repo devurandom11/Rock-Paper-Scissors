@@ -20,6 +20,7 @@ const playerScoreUpdate = document.createElement('span')
 const computerScoreUpdate = document.createElement('span')
 const resetButton = document.createElement('button')
 
+
 // Style elements
 body.style.cssText =
   'background-color: rgb(57, 63, 95); font-family: Orbitron, sans-serif; color: rgb(255, 151, 96); display: flex; flex-direction: column; height: 100vh;'
@@ -60,7 +61,7 @@ h2.textContent = 'Choose your weapon'
 buttonRock.textContent = 'Rock'
 buttonPaper.textContent = 'Paper'
 buttonScissors.textContent = 'Scissors'
-footer.textContent = 'Made with ❤️ by: Devurandom11'
+footer.textContent = 'Made with ❤️ by: Mike Crawford'
 h3.textContent = 'Score'
 playerScoreUpdate.textContent = 0
 computerScoreUpdate.textContent = 0
@@ -92,7 +93,7 @@ const buttons = document.querySelectorAll('button')
 buttons.forEach((button) => {
   button.addEventListener('mouseover', function () {
     button.style.cssText =
-      'font-family: Orbitron, sans-serif; background-color: rgb(106, 126, 106); border: none; border-radius: 5px; padding: 10px; font-size: 1.5em; transition: all 0.2s;'
+      'font-family: Orbitron, sans-serif; background-color: rgb(106, 126, 106); border: none; border-radius: 5px; padding: 10px; font-size: 1.5em; transition: all 0.5s;'
   })
   button.addEventListener('mouseout', function () {
     button.style.cssText =
@@ -115,6 +116,7 @@ function playGame() {
     playerScoreUpdate.textContent < '5'
   ) {
     const playerChoice = this.textContent
+    console.log(playerChoice)
     const computerSelection = computerChoice()
     const result = determineWinner(playerChoice, computerSelection)
     p.textContent = `You chose ${playerChoice} and the computer chose ${computerSelection}. ${result}`
@@ -157,35 +159,43 @@ function computerChoice() {
   const choices = ['Rock', 'Paper', 'Scissors']
   const randomNumber = Math.floor(Math.random() * 3)
   const computerChoice = choices[randomNumber]
+  console.log(computerChoice)
   return computerChoice
 }
 
 // Determine winner function
 function determineWinner(playerChoice, computerChoice) {
   if (playerChoice === computerChoice) {
+    console.log("It's a tie!")
     return "It's a tie!"
   } else if (playerChoice === 'Rock') {
     if (computerChoice === 'Paper') {
       ++computerScoreUpdate.textContent
+      console.log('Computer wins!')
       return 'You lose!'
     } else {
       ++playerScoreUpdate.textContent
+      console.log('You win!')
       return 'You win!'
     }
   } else if (playerChoice === 'Paper') {
     if (computerChoice === 'Scissors') {
       ++computerScoreUpdate.textContent
+      console.log('Computer wins!')
       return 'You lose!'
     } else {
       ++playerScoreUpdate.textContent
+      console.log('You win!')
       return 'You win!'
     }
   } else if (playerChoice === 'Scissors') {
     if (computerChoice === 'Rock') {
       ++computerScoreUpdate.textContent
+      console.log('Computer wins!')
       return 'You lose!'
     } else {
       ++playerScoreUpdate.textContent
+      console.log('You win!')
       return 'You win!'
     }
   }
@@ -199,10 +209,13 @@ function playAsciiFireworks() {
   scoreBoard.remove()
   body.appendChild(fireworksWrapper)
   // delay execution of function by 400 ms
-  for (let i = 0; i < 10000; i++) {
+  for (let i = 0; i < 50; i++) {
     setTimeout(function () {
       const asciiFireworks = document.createElement('span')
       asciiFireworks.textContent = '🎆'
+      asciiFireworks.style.display = 'inline-block'
+      asciiFireworks.style.margin = '2em 2em 2em 2em'
+      asciiFireworks.style.fontSize = '2em'
       fireworksWrapper.appendChild(asciiFireworks)
     }, i * 50)
   }
