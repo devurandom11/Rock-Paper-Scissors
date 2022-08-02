@@ -131,3 +131,7 @@ table {
 * {
   font-family: Orbitron;
 }
+
+h1 {
+  margin: 1em;
+}
